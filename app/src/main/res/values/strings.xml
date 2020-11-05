@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tridictir</string>
+    <string name="español">Español</string>
+    <string name="ispiñil">Ispiñil</string>
+    <string name="inputHint">Escriba el texto a traducir</string>
+    <string name="outputTV">Iscribi il tixti i tridicir</string>
 </resources>
