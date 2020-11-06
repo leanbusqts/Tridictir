@@ -25,9 +25,11 @@ public class WordRepository {
         mWordDao = db.wordDao();
         mAllWords = mWordDao.getAllWords();
     }
+
     LiveData<List<Word>> getAllWords(){
         return mAllWords;
     }
+
     public void insert (Word word){
         new insertAsyncTask(mWordDao).execute(word);
     }
