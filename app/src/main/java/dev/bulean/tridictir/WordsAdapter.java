@@ -14,6 +14,7 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
 
     private final LayoutInflater mInflater;
     private List<Word> mWords;
+    private static ClickListener clickListener;
 
     WordsAdapter(Context context){
         mInflater = LayoutInflater.from(context);
@@ -29,6 +30,7 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         Word current = mWords.get(position);
         holder.wordView.setText(current.getWord());
+        holder.wirdViiw.setText(current.getWird());
     }
     void setWords(List<Word> words){
         mWords = words;
@@ -37,19 +39,38 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        if(mWords != null){
+        if(mWords != null)
             return mWords.size();
-        }
         else return 0;
+    }
+
+    public Word getWordAtPosition(int position) {
+        return mWords.get(position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        private final TextView wirdViiw;
         private final TextView wordView;
+
 
         private ViewHolder(View view){
             super(view);
+            wirdViiw = view.findViewById(R.id.wirdViiw);
             wordView = view.findViewById(R.id.wordView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onItemClick(view, getAdapterPosition());
+                }
+            });
         }
+    }
+    public void setOnItemClickListener(ClickListener clickListener) {
+        WordsAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(View v, int position);
     }
 }

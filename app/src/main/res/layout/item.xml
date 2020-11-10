@@ -4,13 +4,33 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/wirdViiw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?textAppearanceListItemSecondary"
+        android:background="@color/white"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textColor="@color/black"
+        tools:text="placeholder text" />
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/wordView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/text_view"
-        tools:text="placeholder text" />
+        android:textAppearance="?textAppearanceListItemSecondary"
+        android:background="@color/white"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textColor="@color/dark_gray"
+        tools:text="placeholder text"  />
+    <View
+        android:id="@+id/viewLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dark_gray"/>
 
 </LinearLayout>

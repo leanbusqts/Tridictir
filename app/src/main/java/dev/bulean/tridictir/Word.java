@@ -36,11 +36,16 @@ public class Word {
     @NonNull
     @ColumnInfo(name = "word")
     private String mWord;
+    private String mWird;
 
-    public Word(@NonNull String word){
+    public Word(@NonNull String word, @NonNull String wird){
         this.mWord = word;
+        this.mWird = wird;
     }
     public String getWord(){
         return this.mWord;
+    }
+    public String getWird() {
+        return this.mWird;
     }
 }
