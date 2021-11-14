@@ -3,6 +3,6 @@
     <string name="español">Español</string>
     <string name="ispiñil">Ispiñil</string>
     <string name="inputHint">Escriba el texto a traducir</string>
-    <string name="clear">Clear</string>
-    <string name="clear_data">clear all data</string>
+    <string name="delete">Delete</string>
+    <string name="delete_data">delete all data</string>
 </resources>

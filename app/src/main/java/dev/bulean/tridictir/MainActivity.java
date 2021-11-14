@@ -18,9 +18,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -62,9 +59,18 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(String s) {
                 binding.outputTV.setText(viewModel.getContent(s));
                 if(s.isEmpty()){
-                    binding.imgDone.setVisibility(View.INVISIBLE);
+                    binding.imgClear.setVisibility(View.GONE);
+                    binding.imgDone.setVisibility(View.GONE);
                 }else
+                    binding.imgClear.setVisibility(View.VISIBLE);
                     binding.imgDone.setVisibility(View.VISIBLE);
+            }
+        });
+
+        binding.imgClear.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                binding.inputET.getText().clear();
             }
         });
 
@@ -136,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.clear) {
-            Toast.makeText(this, R.string.clear_data, Toast.LENGTH_LONG).show();
+        if (id == R.id.delete) {
+            Toast.makeText(this, R.string.delete_data, Toast.LENGTH_SHORT).show();
             viewModel.deleteAll();
             return true;
         }

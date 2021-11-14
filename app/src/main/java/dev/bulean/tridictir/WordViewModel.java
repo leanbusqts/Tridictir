@@ -31,8 +31,10 @@ public class WordViewModel extends AndroidViewModel {
     }
 
     String getContent(String s){
-        return s.replace('a','i').replace('e','i')
-                .replace('o','i').replace('u','i');
+        return s.replace('a','i').replace('e','i').replace('á','í').replace('é','í')
+                .replace('o','i').replace('u','i').replace('ó','í').replace('ú','í')
+                .replace('A','I').replace('E','I').replace('Á','I').replace('É','I')
+                .replace('O','I').replace('U','I').replace('Ó','I').replace('Ú','I');
     }
 
     String toStr(MutableLiveData<String> contentET){
@@ -42,8 +44,10 @@ public class WordViewModel extends AndroidViewModel {
     public void saveWord(){
         String input = toStr(contentET);
         String inpit = getContent(input);
-        Word word = new Word(input, inpit);
-        insert(word);
+        if(!input.isEmpty()){
+            Word word = new Word(input, inpit);
+            insert(word);
+        }
     }
 
     public void insert(Word word){
