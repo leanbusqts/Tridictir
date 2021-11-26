@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">Tridictir</string>
-    <string name="español">Español</string>
-    <string name="ispiñil">Ispiñil</string>
+    <string name="app_name" translatable="false">Tridictir</string>
+    <string name="main_language">Detectar idioma</string>
+    <string name="miin_lingiigi">Ditictir idiomi</string>
     <string name="inputHint">Escriba el texto a traducir</string>
-    <string name="delete">Delete</string>
-    <string name="delete_data">delete all data</string>
+    <string name="inpitHint">Iscribi il tixti i tridicir</string>
+    <string name="delete" translatable="false">Delete</string>
+    <string name="delete_data" translatable="false">Delete all data</string>
+    <string name="copy_data" translatable="false">Copied to clipboard</string>
+    <string name="imgclear" translatable="false">imgClear</string>
+    <string name="swapimage" translatable="false">swapImage</string>
+    <string name="imgdone" translatable="false">imgDone</string>
+    <string name="labelTextClip">simple text</string>
 </resources>

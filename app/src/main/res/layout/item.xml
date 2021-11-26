@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="4dp"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    style="@style/Theme.Tridictir.Item">
 
     <TextView
         android:id="@+id/wirdViiw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:textSize="14sp"
         tools:text="placeholder text"
-        style="@style/text_wird" />
+        style="@style/Theme.Tridictir.TextWirdItem" />
 
     <TextView
         android:id="@+id/wordView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
         tools:text="placeholder text"
-        style="@style/text_word" />
+        style="@style/Theme.Tridictir.TextWordItem" />
     <View
         android:id="@+id/viewLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/dark_gray"/>
+        android:layout_marginTop="8dp"
+        style="@style/Theme.Tridictir.ViewItem"/>
 
 </LinearLayout>

@@ -27,121 +27,150 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                style="@style/Theme.Tridictir.PopupOverlay" />
+                style="@style/Theme.Tridictir.PopupOverlay"/>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
-            android:id="@+id/swapImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            app:layout_constraintEnd_toStartOf="@+id/outputTextView"
-            app:layout_constraintStart_toEndOf="@+id/inputTextView"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:srcCompat="@drawable/ic_swap"
-            app:tint="@color/blue_500"/>
-
-        <TextView
-            android:id="@+id/inputTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_small"
-            android:text="@string/español"
-            android:textStyle="bold"
-            android:textColor="@color/blue_500"
-            app:layout_constraintBottom_toBottomOf="@+id/swapImage"
-            app:layout_constraintEnd_toStartOf="@+id/swapImage"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/swapImage" />
-
-        <TextView
-            android:id="@+id/outputTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:text="@string/ispiñil"
-            android:textStyle="bold"
-            android:textColor="@color/blue_500"
-            app:layout_constraintBottom_toBottomOf="@+id/swapImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/swapImage"
-            app:layout_constraintTop_toTopOf="@+id/swapImage" />
-
-        <View
-            android:id="@+id/viewLine"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/Theme.Tridictir.Container"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/margin_small"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/swapImage" />
-
-        <EditText
-            android:id="@+id/inputET"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:ems="10"
-            android:hint="@string/inputHint"
-            android:imeOptions="actionDone"
-            android:inputType="textCapSentences"
-            android:padding="8dp"
-            android:text="@={viewModel.contentET}"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewLine" />
-
-        <ImageView
-            android:id="@+id/imgClear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:src="@drawable/ic_clear"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/inputET"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/inputET"
-            app:layout_constraintVertical_bias="0.25" />
-
-        <TextView
-            android:id="@+id/outputTV"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:textIsSelectable="true"
-            android:selectAllOnFocus="true"
-            app:layout_constraintEnd_toStartOf="@+id/imgDone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputET" />
-
-        <ImageButton
-            android:id="@+id/imgDone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:background="@drawable/btn_background_done"
-            android:src="@drawable/ic_forward"
-            android:tint="@color/white"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/outputTV"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/outputTV" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/outputTV" />
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
+            <ImageView
+                android:id="@+id/swapImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/swapimage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_swap"
+                style="@style/Theme.Tridictir.Main"/>
+
+            <TextView
+                android:id="@+id/inputTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_language"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/swapImage"
+                app:layout_constraintEnd_toStartOf="@+id/swapImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/swapImage"
+                style="@style/Theme.Tridictir.Main"/>
+
+            <TextView
+                android:id="@+id/outputTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/miin_lingiigi"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/swapImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/swapImage"
+                app:layout_constraintTop_toTopOf="@+id/swapImage"
+                style="@style/Theme.Tridictir.Main"/>
+
+            <View
+                android:id="@+id/viewLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_small"
+                style="@style/Theme.Tridictir.ViewLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/swapImage" />
+
+            <EditText
+                android:id="@+id/inputET"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/inputHint"
+                android:imeOptions="actionDone"
+                android:inputType="textCapSentences|textMultiLine"
+                android:padding="8dp"
+                android:text="@={viewModel.contentET}"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/imgClear"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+
+            <ImageView
+                android:id="@+id/imgClear"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:src="@drawable/ic_clear"
+                android:visibility="gone"
+                android:contentDescription="@string/imgclear"
+                app:layout_constraintBottom_toBottomOf="@+id/inputET"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/inputET"
+                app:layout_constraintVertical_bias="0.25"/>
+
+            <TextView
+                android:id="@+id/outputTV"
+                android:layout_width="0dp"
+                android:layout_height="96dp"
+                android:padding="8dp"
+                android:selectAllOnFocus="true"
+                android:textIsSelectable="false"
+                android:gravity="center_vertical"
+                android:text="@string/inpitHint"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/imgDone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputET" />
+
+            <ImageButton
+                android:id="@+id/imgDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:background="@drawable/btn_background_done"
+                android:src="@drawable/ic_forward"
+                android:tint="@color/white"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/outputTV"
+                app:layout_constraintBottom_toTopOf="@id/imgCopy"
+                android:contentDescription="@string/imgdone" />
+
+            <ImageButton
+                android:id="@+id/imgCopy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:contentDescription="@string/imgdone"
+                android:src="@drawable/ic_copy"
+                android:visibility="gone"
+                style="@style/Theme.Tridictir.ImgCopy"
+                app:layout_constraintBottom_toBottomOf="@+id/outputTV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgDone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="@dimen/margin_small"
+                android:scrollbars="vertical"
+                android:overScrollMode="never"
+                style="@style/Theme.Tridictir.Recycler"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/outputTV"
+                tools:listitem="@layout/item"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -7,10 +7,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-
 import java.util.List;
-
-import dev.bulean.tridictir.Word;
 
 /*
 * The data access object, or Dao, is an annotated class where you specify SQL queries
@@ -34,6 +31,6 @@ public interface WordDao {
     @Delete
     void deleteWord(Word word);
 
-    @Query("SELECT * from word_table ORDER BY word ASC")
+    @Query("SELECT * FROM word_table ORDER BY wid DESC")
     LiveData<List<Word>> getAllWords();
 }

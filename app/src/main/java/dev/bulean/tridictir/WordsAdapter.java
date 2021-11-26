@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> {
 
-    private final LayoutInflater mInflater;
+    private LayoutInflater mInflater;
     private List<Word> mWords;
     private static ClickListener clickListener;
 
@@ -20,8 +20,9 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
         mInflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.item, parent, false);
         return new ViewHolder(itemView);
     }
@@ -53,17 +54,11 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
         private final TextView wirdViiw;
         private final TextView wordView;
 
-
         private ViewHolder(View view){
             super(view);
             wirdViiw = view.findViewById(R.id.wirdViiw);
             wordView = view.findViewById(R.id.wordView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickListener.onItemClick(view, getAdapterPosition());
-                }
-            });
+            itemView.setOnClickListener(view1 -> clickListener.onItemClick(view1, getAdapterPosition()));
         }
     }
     public void setOnItemClickListener(ClickListener clickListener) {

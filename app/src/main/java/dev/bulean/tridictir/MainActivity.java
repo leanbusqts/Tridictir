@@ -1,30 +1,23 @@
 package dev.bulean.tridictir;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
-
 import dev.bulean.tridictir.databinding.ActivityMainBinding;
-/*
-* https://developer.android.com/training/keyboard-input/style
-* */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,71 +39,64 @@ public class MainActivity extends AppCompatActivity {
         recycler.setAdapter(adapter);
         recycler.setLayoutManager(new LinearLayoutManager(this));
 
-        viewModel.getAllWords().observe(this, new Observer<List<Word>>() {
-            @Override
-            public void onChanged(@Nullable final List<Word> words) {
-                // Update the cached copy of the words in the adapter.
-                adapter.setWords(words);
+        viewModel.getAllWords().observe(this, words -> {
+            // Update the cached copy of the words in the adapter.
+            adapter.setWords(words);
+        });
+
+        viewModel.contentET.observe(this, s -> {
+            binding.outputTV.setText(viewModel.getContent(s));
+            if(s.isEmpty()){
+                binding.imgClear.setVisibility(View.GONE);
+                binding.imgDone.setVisibility(View.GONE);
+                binding.imgCopy.setVisibility(View.GONE);
+                binding.outputTV.setText(getResources().getText(R.string.inpitHint));
+            } else {
+                binding.imgClear.setVisibility(View.VISIBLE);
+                binding.imgDone.setVisibility(View.VISIBLE);
+                binding.imgCopy.setVisibility(View.VISIBLE);
             }
         });
 
-        viewModel.contentET.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                binding.outputTV.setText(viewModel.getContent(s));
-                if(s.isEmpty()){
-                    binding.imgClear.setVisibility(View.GONE);
-                    binding.imgDone.setVisibility(View.GONE);
-                }else
-                    binding.imgClear.setVisibility(View.VISIBLE);
-                    binding.imgDone.setVisibility(View.VISIBLE);
-            }
+        binding.imgClear.setOnClickListener(view -> binding.inputET.getText().clear());
+
+        binding.imgDone.setOnClickListener(view -> {
+            viewModel.saveWord();
+            binding.inputET.getText().clear();
+            hideKey(view);
         });
 
-        binding.imgClear.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                binding.inputET.getText().clear();
-            }
+        binding.imgCopy.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText(getString(R.string.labelTextClip), binding.outputTV.getText());
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(MainActivity.this, R.string.copy_data, Toast.LENGTH_SHORT).show();
         });
-
-        binding.imgDone.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
+        binding.inputET.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            boolean handled = false;
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
                 viewModel.saveWord();
                 binding.inputET.getText().clear();
-                hideKey(view);
+                hideKey(textView);
+                handled = true;
             }
-        });
-
-        binding.inputET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    viewModel.saveWord();
-                    binding.inputET.getText().clear();
-                    hideKey(textView);
-                    handled = true;
-                }
-                return handled;
-            }
+            return handled;
         });
         ItemTouchHelper helper = new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(0,
                         ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
                     @Override
                     // We are not implementing onMove() in this app.
-                    public boolean onMove(RecyclerView recycler,
-                                          RecyclerView.ViewHolder viewHolder,
-                                          RecyclerView.ViewHolder target) {
+                    public boolean onMove(@NonNull RecyclerView recycler,
+                                          @NonNull RecyclerView.ViewHolder viewHolder,
+                                          @NonNull RecyclerView.ViewHolder target) {
                         return false;
                     }
 
                     @Override
                     // When the use swipes a word,
                     // delete that word from the database.
-                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                         int position = viewHolder.getAdapterPosition();
                         Word word = adapter.getWordAtPosition(position);
                         viewModel.delete(word);
@@ -119,12 +105,9 @@ public class MainActivity extends AppCompatActivity {
         // Attach the item touch helper to the recycler view.
         helper.attachToRecyclerView(recycler);
 
-        adapter.setOnItemClickListener(new WordsAdapter.ClickListener()  {
-            @Override
-            public void onItemClick(View v, int position) {
-                Word word = adapter.getWordAtPosition(position);
-                binding.inputET.setText(word.getWord());
-            }
+        adapter.setOnItemClickListener((v, position) -> {
+            Word word = adapter.getWordAtPosition(position);
+            binding.inputET.setText(word.getWord());
         });
 
     }

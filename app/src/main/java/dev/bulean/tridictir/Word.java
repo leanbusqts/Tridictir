@@ -32,7 +32,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "word_table")
 public class Word {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    public int wid = 0;
+
     @NonNull
     @ColumnInfo(name = "word")
     private String mWord;

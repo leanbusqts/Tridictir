@@ -7,11 +7,9 @@ package dev.bulean.tridictir;
 * */
 
 import android.app.Application;
-
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
 import java.util.List;
 
 public class WordViewModel extends AndroidViewModel {
@@ -31,10 +29,14 @@ public class WordViewModel extends AndroidViewModel {
     }
 
     String getContent(String s){
-        return s.replace('a','i').replace('e','i').replace('á','í').replace('é','í')
-                .replace('o','i').replace('u','i').replace('ó','í').replace('ú','í')
-                .replace('A','I').replace('E','I').replace('Á','I').replace('É','I')
-                .replace('O','I').replace('U','I').replace('Ó','I').replace('Ú','I');
+        return s.replace('a','i').replace('e','i').replace('o','i').replace('u','i')
+                .replace('á','í').replace('é','í').replace('ó','í').replace('ú','í')
+                .replace('à','ì').replace('è','ì').replace('è','ì').replace('ù','ì')
+                .replace('ä','ï').replace('ë','ï').replace('ö','ï').replace('ü','ï')
+                .replace('A','I').replace('E','I').replace('O','I').replace('U','I')
+                .replace('Á','I').replace('É','I').replace('Ó','I').replace('Ú','I')
+                .replace('À','Ì').replace('È','Ì').replace('Ò','Ì').replace('Ù','Ì')
+                .replace('Ä','Ï').replace('Ë','Ï').replace('Ö','Ï').replace('Ü','Ï');
     }
 
     String toStr(MutableLiveData<String> contentET){
