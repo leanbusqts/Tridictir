@@ -12,6 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.SplashCustom" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/dark_700</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_tridictir_round</item>
+        <item name="postSplashScreenTheme">@style/Theme.Tridictir</item>
     </style>
 
     <style name="Theme.Tridictir.NoActionBar">
