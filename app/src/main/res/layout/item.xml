@@ -8,6 +8,7 @@
     android:paddingTop="8dp"
     android:clickable="true"
     android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     style="@style/Theme.Tridictir.Item">
 
     <TextView
