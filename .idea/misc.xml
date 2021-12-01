@@ -10,11 +10,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item.xml" value="0.375" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.12864583333333332" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_tridictir_round.xml" value="0.14479166666666668" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_tridictir_splash_round.xml" value="0.2641025641025641" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

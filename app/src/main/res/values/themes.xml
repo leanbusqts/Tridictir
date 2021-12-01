@@ -18,7 +18,7 @@
 
     <style name="Theme.SplashCustom" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_tridictir_round</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_tridictir_splash_round</item>
         <item name="postSplashScreenTheme">@style/Theme.Tridictir</item>
     </style>
 
