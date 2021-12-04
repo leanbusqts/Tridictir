@@ -8,8 +8,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewModel.contentET.observe(this, s -> {
-            binding.outputTV.setText(viewModel.getContent(s));
+            binding.outputTV.setText(Utils.replaceString(s));
             if(s.isEmpty()){
                 binding.imgClear.setVisibility(View.GONE);
                 binding.imgDone.setVisibility(View.GONE);
@@ -68,10 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.imgCopy.setOnClickListener(v -> {
-            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText(getString(R.string.labelTextClip), binding.outputTV.getText());
-            clipboard.setPrimaryClip(clip);
-            Toast.makeText(MainActivity.this, R.string.copy_data, Toast.LENGTH_SHORT).show();
+            Utils.copyToClipboard(this, binding.outputTV.getText().toString());
         });
         binding.inputET.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             boolean handled = false;
@@ -95,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    // When the use swipes a word,
-                    // delete that word from the database.
+                    // When the use swipes a word, delete that word from the database.
                     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                         int position = viewHolder.getAdapterPosition();
                         Word word = adapter.getWordAtPosition(position);
