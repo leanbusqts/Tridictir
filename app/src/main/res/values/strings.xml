@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Tridictir</string>
     <string name="main_language">Detectar idioma</string>
-    <string name="miin_lingiigi">Ditictir idiomi</string>
+    <string name="miin_lingiigi">Ditictir idiimi</string>
     <string name="inputHint">Escriba el texto a traducir</string>
     <string name="inpitHint">Iscribi il tixti i tridicir</string>
     <string name="delete" translatable="false">Delete</string>
