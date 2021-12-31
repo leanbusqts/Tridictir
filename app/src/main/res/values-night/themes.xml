@@ -16,12 +16,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.SplashCustom" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/darkprin</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_tridictir_splash_round_dark</item>
-        <item name="postSplashScreenTheme">@style/Theme.Tridictir</item>
-    </style>
-
     <style name="Theme.Tridictir.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
