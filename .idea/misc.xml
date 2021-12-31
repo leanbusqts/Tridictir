@@ -10,6 +10,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item.xml" value="0.375" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.12864583333333332" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_tridictir.xml" value="0.2212962962962963" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_tridictir_splash.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_tridictir_splash_round.xml" value="0.2641025641025641" />
       </map>
     </option>
