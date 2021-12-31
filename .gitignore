@@ -13,4 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-*.aab
+/app/release/app-release.aab
